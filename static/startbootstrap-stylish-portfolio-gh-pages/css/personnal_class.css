@@ -1,0 +1,28 @@
+.div-translate > div
+{
+    position: absolute;
+    display: flex;
+    flex-wrap:wrap;
+    right: 330px;
+    top: 20px;
+    width: 140px;
+    height: 65px;
+}
+.div-english
+{
+    margin-left: 10px;
+    width: 65px;
+    height: 65px;
+}
+.div-french
+{
+    width: 65px;
+    height: 65px;
+}
+.profil-picture{
+    position: absolute;
+    left:7%;
+    width: 350px;
+    height: 700px;
+    top: 100px;
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    
+        <title>
+            Développeur - Vincent DÉVIGNE
+        </title>
+    
+        <!-- Bootstrap Core CSS -->
+        <link href="../static/startbootstrap-stylish-portfolio-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
+    
+        <!-- Custom Fonts -->
+        <link href="../static/startbootstrap-stylish-portfolio-gh-pages/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+        <link href="../static/startbootstrap-stylish-portfolio-gh-pages/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    
+        <!-- Custom CSS -->
+        <link href="../static/startbootstrap-stylish-portfolio-gh-pages/css/stylish-portfolio.min.css" rel="stylesheet">
+        <link href="../static/startbootstrap-stylish-portfolio-gh-pages/css/personnal_class.css" rel="stylesheet">
+
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+      </head>
+
+    {% endblock %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+    <body id="page-top">
+        <!-- Navigation -->
+        <a class="menu-toggle rounded" href="#">
+          <i class="fas fa-bars"></i>
+        </a>
+        <nav id="sidebar-wrapper">
+            <div class="div-translate" style="position: relative">
+                <div>
+                        <a onclick="this.href='/#'+ divMenu;" ><img src="../static/image/drapeau-france-logo.png" class="div-french"></a> 
+                        <a onclick="this.href='/english#'+ divMenu;" ><img src="../static/image/drapeau-royaume-unis-logo.png" class="div-english"></a> 
+                </div>
+            </div>
+          <ul class="sidebar-nav">
+            <li class="sidebar-nav-item">
+              <a class="js-scroll-trigger" href="#page-top" onclick="divMenu='page-top';" >{{ language["menu"]["home_page"] }} </a>
+            </li>
+            <li class="sidebar-nav-item">
+              <a class="js-scroll-trigger" href="#about" onclick="divMenu='about';">{{ language["menu"]["personality"] }}</a>
+            </li>
+            <li class="sidebar-nav-item">
+              <a class="js-scroll-trigger" href="#services" onclick="divMenu='services';">{{ language["menu"]["skills"] }}</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a class="js-scroll-trigger" href="#action" onclick="divMenu='contact';"> {{ language["menu"]["exams"] }}</a>
+              </li>
+            <li class="sidebar-nav-item">
+              <a class="js-scroll-trigger" href="#portfolio" onclick="divMenu='portfolio';">{{ language["menu"]["career"] }}</a>
+            </li>
+            <li class="sidebar-nav-item">
+              <a class="js-scroll-trigger" href="#contact" onclick="divMenu='contact';"> {{ language["menu"]["contact"] }}</a>
+            </li>
+          </ul>
+        </nav>
+        <!-- Header -->
+        <header class="masthead d-flex">
+        <img src="../static/image/profil3.png" class="profil-picture"></img>
+        <div class="container text-center my-auto">
+            <h1 class="mb-1">DÉVIGNE Vincent</h1>
+            <h3 class="mb-5">
+              <em>{{ language["home_page"]["job"] }} </em>
+            </h3>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">{{ language["home_page"]["more"] }}</a>
+          </div>
+          <div class="overlay"></div>
+        </header>
+    
+        <!-- About -->
+        <section class="content-section bg-light" id="about">
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-lg-10 mx-auto">
+                <h2> {{ language["personnality"]["title_1"] }}</h2>
+                <p class="lead mb-5">
+                        {{ language["personnality"]["content_1"] }}
+                </p>
+                <h2>{{ language["personnality"]["title_2"] }}</h2>
+                <p class="lead mb-5">{{ language["personnality"]["content_2"] }}</p>
+                <h2>{{ language["personnality"]["title_3"] }}</h2>
+                <p class="lead mb-5"> 
+                        {{ language["personnality"]["content_3"] }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+    
+        <!-- Services -->
+        <section class="content-section bg-primary text-white text-center" id="services">
+          <div class="container">
+            <div class="content-section-heading">
+              <h3 class="text-secondary mb-0">{{ language.skills.on_title }}</h3>
+              <h2 class="mb-5">{{ language.skills.title }}</h2>
+            </div>
+            <div class="row" id="histogram-skills">
+            </div>
+          </div>
+        </section>
+
+    <!-- Call to Action -->
+    <section class="content-section bg-light text-black" id="action">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <h2> {{ language["exams"]["title_useful_exam"] }}</h2>
+                        <p class="lead mb-5">
+                            {% for exam in language["exams"]["content_useful_exam"] %}
+                             - {{ exam.exam }} {% if exam.score %} - {{ exam.score }} {%endif%}
+                             {% if exam.place %} - {{ exam.place }} {%endif%} <br>
+                            {% endfor %}
+                        </p>
+                    </div>
+                    <div class="col-lg-10 mx-auto">
+                            <h2> {{ language["exams"]["title_secondary_exam"] }}</h2>
+                            <p class="lead mb-5">
+                                {% for exam in language["exams"]["content_secondary_exam"] %}
+                                - {{ exam.exam }} {% if exam.score %} - {{ exam.score }} {%endif%}
+                                {% if exam.place %} - {{ exam.place }} {%endif%} <br>
+                                {% endfor %}
+                            </p>
+                        </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Portfolio -->
+        <section class="content-section bg-primary text-white" id="portfolio">
+            <div class="container text-center">
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">
+                            <h2> {{ language["experience"]["title_work_experience"] }}</h2>
+                            <p class="lead mb-5">
+                                {% for job in language["experience"]["content_work_experience"] %}
+                                    - {{ job.label }} - {{ job.enterprise }} - {{ job.location }} - {{ job.time }} <br>
+                                {% endfor %}
+                            </p>
+                        </div>
+                        <div class="col-lg-10 mx-auto">
+                            <h2> {{ language["experience"]["title_social_experience"] }}</h2>
+                            <p class="lead mb-5">
+                                {% for job in language["experience"]["content_social_experience"] %}
+                                    - {{ job.label }} - {{ job.location }} - {{ job.time }} <br>
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    
+        <!-- Map -->
+        <section id="contact" class="content-section bg-light text-black">
+            <div class="container text-center">
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">
+                                <h2> Contact </h2>
+                            <p class="lead mb-5">
+                                {{ language.contact }} : vincent.devigne@hotmail.fr
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        {% block footer %}
+        <footer class="footer text-center">
+            <div class="container">
+              <p class="text-muted small mb-0">Copyright &copy; Mon site 2019</p>
+            </div>
+          </footer>
+        {% endblock %}
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
+    <!-- Bootstrap core JavaScript -->
+    <script src="../static/startbootstrap-stylish-portfolio-gh-pages/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/startbootstrap-stylish-portfolio-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../static/startbootstrap-stylish-portfolio-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../static/startbootstrap-stylish-portfolio-gh-pages/js/stylish-portfolio.min.js"></script>
+    
+    <script>
+            // for change language, need to keep the same menu
+            var divMenu = "";
+            $(document).ready(function(){
+               divMenu = "page-top";
+            });
+            
+            // keep the good menu when we scroll
+            $(".content-section").hover(function(){
+                divMenu = $(this).attr("id");
+            });
+            // the histogram for the skills 
+            var data = [
+            {
+                x:['Python', 'Java', 'C#'],
+                y: [70, 35, 25],
+                type: 'bar',
+                name: '{{ language.skills.treatement_language }}'
+            },
+            {
+                x:['Postgresql'],
+                y: [50],
+                type: 'bar',
+                name: '{{ language.skills.sql_language }}'
+            },
+            {
+                x:['Javascript','Jquery','HTML','Css'],
+                y: [50,60,60,40],
+                type: 'bar',
+                name: '{{ language.skills.client_side_langage }}'
+            },
+            {
+                x:['{{ language.skills.fr }}','{{ language.skills.en }}', '{{ language.skills.es }}'],
+                y: [90,70,30],
+                type: 'bar',
+                name: "{{ language.skills.talk_language }}"
+            },
+            {
+                x:['VS Code', 'Visual Studio','Eclipse'],
+                y: [60,30,50],
+                type: 'bar',
+                name: "{{ language.skills.editor }}"
+            },
+            {
+                x:['Git'],
+                y: [40],
+                type: 'bar',
+                name: "{{ language.skills.git }}"
+            }];
+
+            var layout = {
+                title: '{{ language.skills.level }} (%)',
+                showlegend: true,
+                font: {size: 20}
+            };
+            
+            Plotly.newPlot('histogram-skills', data, layout, {displayModeBar: false, responsive: true});
+            
+    </script></body>
+
+</html>
